@@ -158,8 +158,32 @@ button {
 }
 
 .hero {
-  padding: 88px 0 70px;
-  background: linear-gradient(180deg, #fffaf2 0%, var(--paper) 100%);
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(560px, 78vh, 760px);
+  display: grid;
+  align-items: center;
+  padding: 86px 0 78px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(32, 40, 38, 0.82) 0%, rgba(32, 40, 38, 0.56) 42%, rgba(32, 40, 38, 0.16) 100%),
+    linear-gradient(180deg, rgba(32, 40, 38, 0.1) 0%, rgba(32, 40, 38, 0.56) 100%),
+    url("assets/hero-spiritual-abundance.png") center center / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 140px;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(250, 246, 239, 0) 0%, var(--paper) 100%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-grid,
@@ -170,11 +194,23 @@ button {
   align-items: center;
 }
 
+.hero .hero-grid {
+  grid-template-columns: minmax(0, 720px);
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
 .hero-copy h1,
 .page-hero h1 {
   margin: 10px 0 18px;
   font-size: 48px;
   line-height: 1.18;
+}
+
+.hero-copy h1 {
+  font-size: 54px;
 }
 
 .hero-copy p,
@@ -183,6 +219,16 @@ button {
 .launch-copy p {
   color: var(--muted);
   line-height: 1.9;
+}
+
+.hero .hero-copy p {
+  max-width: 660px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 18px;
+}
+
+.hero .eyebrow {
+  color: #f4c86e;
 }
 
 .eyebrow {
@@ -227,6 +273,19 @@ button {
 
 .button.secondary {
   background: #fff;
+}
+
+.hero .button.primary {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+
+.hero .button.secondary {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px);
 }
 
 .hero-media,
@@ -427,6 +486,9 @@ button {
 }
 
 .service-card.large {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
   padding: 0 0 22px;
 }
 
@@ -437,6 +499,26 @@ button {
 .service-card.large .text-button {
   margin-left: 22px;
   margin-right: 22px;
+}
+
+.service-card.large h2 {
+  font-size: 26px;
+  line-height: 1.32;
+  text-wrap: balance;
+}
+
+.service-card.large p {
+  margin-top: 0;
+}
+
+.service-card.large .check-list {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.service-card.large > a,
+.service-card.large > .text-button {
+  margin-top: 10px;
 }
 
 .service-cover,
@@ -559,6 +641,23 @@ button {
 .service-price {
   margin-left: 22px;
   margin-right: 22px;
+}
+
+.course-price.compact.service-price {
+  width: calc(100% - 44px);
+  grid-template-columns: max-content minmax(0, 1fr);
+  margin: auto 22px 16px;
+  box-sizing: border-box;
+}
+
+.course-price.compact.service-price strong {
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+.course-price.compact.service-price del {
+  justify-self: start;
+  white-space: nowrap;
 }
 
 .teaching-layout {
@@ -1853,6 +1952,10 @@ button {
     font-size: 28px;
   }
 
+  .service-card.large h2 {
+    font-size: 24px;
+  }
+
   .problem-grid,
   .method-grid,
   .service-preview-grid,
@@ -1901,12 +2004,21 @@ button {
     width: 100%;
   }
 
+  .service-card.large .service-price {
+    width: calc(100% - 44px);
+  }
+
   .schedule-list span {
     justify-self: start;
   }
 
   .hero-media img {
     min-height: 260px;
+  }
+
+  .hero {
+    min-height: 590px;
+    background-position: center center, center center, 58% center;
   }
 
   .person-photo img {

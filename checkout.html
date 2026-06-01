@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="光語心靈學苑結帳頁，填寫購買資料並完成課程訂單。">
+    <title>結帳｜光語心靈學苑</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="notice">2026 最新課程｜潛意識重塑工作坊開放報名</div>
+      <div class="nav-shell">
+        <a class="logo" href="index.html"><span class="logo-mark">光</span><span><strong>光語心靈學苑</strong><small>潛意識 × 冥想音頻</small></span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav">選單</button>
+        <nav class="main-nav" id="mainNav" aria-label="主選單">
+          <a href="index.html">首頁</a>
+          <a href="about.html">關於我</a>
+          <a href="services.html">服務項目</a>
+          <a href="courses.html">最新課程</a>
+          <a href="teaching.html">教學</a>
+          <a href="contact.html">聯絡我們</a>
+        </nav>
+        <div class="header-actions"><a class="cart-link" href="cart.html">購物車 0</a><a class="login-link" href="contact.html">登入</a></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero compact">
+        <div class="container">
+          <p class="eyebrow">Checkout</p>
+          <h1>線上結帳</h1>
+          <p>這是提案 demo 的前台購買流程，展示學員如何完成課程與音頻產品訂購。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container checkout-layout">
+          <form class="checkout-form" id="checkoutForm">
+            <h2>購買人資料</h2>
+            <label>
+              <span>姓名</span>
+              <input type="text" name="customerName" required placeholder="請輸入姓名">
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="customerEmail" required placeholder="name@example.com">
+            </label>
+            <label>
+              <span>手機</span>
+              <input type="tel" name="phone" required placeholder="09xx-xxx-xxx">
+            </label>
+            <fieldset>
+              <legend>付款方式</legend>
+              <label><input type="radio" name="payment" value="credit" checked> 信用卡</label>
+              <label><input type="radio" name="payment" value="transfer"> 銀行轉帳</label>
+              <label><input type="radio" name="payment" value="linepay"> LINE Pay</label>
+            </fieldset>
+            <label>
+              <span>備註</span>
+              <textarea name="note" rows="4" placeholder="例如：想詢問分期、發票或課程觀看期限"></textarea>
+            </label>
+            <button class="button primary" type="submit">送出訂單</button>
+          </form>
+
+          <aside class="order-summary checkout-summary">
+            <p class="eyebrow">Your Order</p>
+            <div id="checkoutItems" class="mini-cart"></div>
+            <div class="summary-row total"><span>訂單總額</span><strong id="checkoutTotal">NT$ 0</strong></div>
+            <a class="button secondary" href="cart.html">返回購物車</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><strong>光語心靈學苑</strong><p>陪你透過潛意識、冥想與能量練習，找回穩定而豐盛的生活節奏。</p></div>
+        <nav aria-label="頁尾選單"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="courses.html">最新課程</a><a href="contact.html">聯絡我們</a></nav>
+      </div>
+      <p class="copyright">Copyright © 2026 光語心靈學苑 保留一切權利。</p>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

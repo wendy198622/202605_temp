@@ -44,6 +44,10 @@ textarea {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
@@ -393,9 +397,24 @@ textarea {
 .section-head a,
 .service-card a,
 .course-card a,
-.post-card a {
+.post-card a,
+.text-button {
   color: var(--teal-dark);
   font-weight: 900;
+}
+
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.text-button.danger {
+  color: var(--coral);
 }
 
 .service-card,
@@ -414,7 +433,8 @@ textarea {
 .service-card.large h2,
 .service-card.large p,
 .service-card.large ul,
-.service-card.large a {
+.service-card.large a,
+.service-card.large .text-button {
   margin-left: 22px;
   margin-right: 22px;
 }
@@ -666,16 +686,19 @@ textarea {
 }
 
 .contact-form,
+.checkout-form,
 .contact-card {
   padding: 24px;
 }
 
-.contact-form {
+.contact-form,
+.checkout-form {
   display: grid;
   gap: 18px;
 }
 
-.contact-form label {
+.contact-form label,
+.checkout-form label {
   display: grid;
   gap: 8px;
   font-weight: 900;
@@ -683,7 +706,10 @@ textarea {
 
 .contact-form input,
 .contact-form select,
-.contact-form textarea {
+.contact-form textarea,
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -695,9 +721,55 @@ textarea {
 
 .contact-form input:focus,
 .contact-form select:focus,
-.contact-form textarea:focus {
+.contact-form textarea:focus,
+.checkout-form input:focus,
+.checkout-form select:focus,
+.checkout-form textarea:focus {
   border-color: var(--teal);
   box-shadow: 0 0 0 4px rgba(20, 117, 103, 0.12);
+}
+
+.checkout-form fieldset {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.checkout-form legend {
+  padding: 0 6px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.checkout-form fieldset label {
+  display: flex;
+  min-height: 44px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.checkout-form fieldset input[type="radio"] {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  accent-color: var(--teal);
+  box-shadow: none;
+}
+
+.checkout-form fieldset input[type="radio"]:focus {
+  box-shadow: none;
 }
 
 .contact-note {
@@ -763,6 +835,493 @@ textarea {
   font-size: 14px;
 }
 
+.sales-hero {
+  padding: 72px 0;
+  background: linear-gradient(180deg, #fffaf2 0%, var(--paper) 100%);
+}
+
+.sales-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: start;
+}
+
+.sales-copy h1 {
+  margin: 10px 0 18px;
+  font-size: 46px;
+  line-height: 1.18;
+}
+
+.lead {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.9;
+}
+
+.tag-row,
+.course-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag-row {
+  margin: 24px 0 16px;
+}
+
+.tag-row span,
+.theme-grid span {
+  padding: 8px 11px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--teal-dark);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.rating-line {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.sales-card,
+.price-card,
+.quote-card,
+.teacher-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.sales-card {
+  position: sticky;
+  top: 118px;
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+}
+
+.sales-card .course-cover {
+  min-height: 180px;
+}
+
+.sales-meta {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sales-meta li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sales-meta li:last-child {
+  border-bottom: 0;
+}
+
+.sales-meta span,
+.price-box small {
+  color: var(--muted);
+}
+
+.price-box {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.price-box span {
+  color: var(--teal-dark);
+  font-weight: 900;
+}
+
+.price-box strong {
+  font-size: 30px;
+}
+
+.definition-box {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid rgba(20, 117, 103, 0.22);
+  border-radius: 8px;
+  background: rgba(20, 117, 103, 0.08);
+}
+
+.definition-box strong {
+  color: var(--teal-dark);
+}
+
+.definition-box span {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.detail-nav {
+  position: sticky;
+  top: 115px;
+  z-index: 10;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(250, 246, 239, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.detail-nav .container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.detail-nav a {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.detail-nav a:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.copy-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.copy-stack p,
+.experience-list span,
+.lesson-list p,
+.faq-list p,
+.teacher-panel p,
+.quote-card p,
+.price-card p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.fit-grid,
+.price-grid,
+.testimonial-grid,
+.theme-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.fit-grid,
+.price-grid,
+.testimonial-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.theme-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.theme-grid span {
+  text-align: center;
+}
+
+.experience-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-list li {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.price-card,
+.quote-card,
+.teacher-panel {
+  padding: 22px;
+}
+
+.price-card {
+  display: grid;
+  align-content: start;
+}
+
+.price-card span {
+  color: var(--teal-dark);
+  font-weight: 900;
+}
+
+.price-card h3 {
+  margin: 8px 0;
+  font-size: 24px;
+}
+
+.price-card strong {
+  font-size: 28px;
+}
+
+.price-card.is-featured {
+  border-color: rgba(20, 117, 103, 0.38);
+  background: linear-gradient(180deg, rgba(20, 117, 103, 0.09), #fff 52%);
+}
+
+.quote-card p {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.lesson-list,
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.lesson-list details,
+.faq-list details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.lesson-list summary,
+.faq-list summary {
+  cursor: pointer;
+  padding: 17px 18px;
+  font-weight: 900;
+}
+
+.lesson-list p,
+.faq-list p {
+  margin: 0;
+  padding: 0 18px 18px;
+}
+
+.teacher-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.teacher-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.teacher-stats span {
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--muted);
+}
+
+.teacher-stats strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.cta-band {
+  text-align: center;
+  background: var(--soft);
+}
+
+.cta-band h2 {
+  max-width: 760px;
+  margin: 10px auto 24px;
+}
+
+.brand-funnel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.brand-funnel p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.funnel-steps {
+  display: grid;
+  gap: 12px;
+}
+
+.funnel-steps a {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.funnel-steps span {
+  color: var(--muted);
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.cart-layout,
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: start;
+}
+
+.cart-panel,
+.order-summary,
+.checkout-form {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.cart-panel {
+  padding: 24px;
+}
+
+.cart-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.cart-heading h2,
+.checkout-form h2 {
+  margin: 0;
+}
+
+.cart-items {
+  display: grid;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.cart-item span,
+.muted-text {
+  color: var(--muted);
+}
+
+.cart-item h3 {
+  margin: 5px 0;
+}
+
+.cart-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.item-price {
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.item-price small {
+  color: var(--muted);
+}
+
+.order-summary {
+  position: sticky;
+  top: 118px;
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.summary-row,
+.mini-cart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.summary-row.total {
+  border-bottom: 0;
+  font-size: 20px;
+}
+
+.mini-cart {
+  display: grid;
+  gap: 6px;
+}
+
+.empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 28px;
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.empty-state h3,
+.empty-state p {
+  margin: 0;
+}
+
+.empty-state p {
+  color: var(--muted);
+}
+
+.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 @media (max-width: 980px) {
   .nav-shell {
     grid-template-columns: auto auto;
@@ -796,7 +1355,12 @@ textarea {
   .contact-layout,
   .blog-layout,
   .teaching-layout,
-  .schedule-panel {
+  .schedule-panel,
+  .sales-grid,
+  .detail-layout,
+  .brand-funnel,
+  .cart-layout,
+  .checkout-layout {
     grid-template-columns: 1fr;
   }
 
@@ -806,12 +1370,24 @@ textarea {
   .service-grid,
   .course-grid,
   .post-grid,
-  .stats-grid {
+  .stats-grid,
+  .fit-grid,
+  .price-grid,
+  .testimonial-grid,
+  .theme-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .course-detail {
     grid-template-columns: 1fr;
+  }
+
+  .sales-card {
+    position: static;
+  }
+
+  .order-summary {
+    position: static;
   }
 
   .category-box {
@@ -833,7 +1409,8 @@ textarea {
   }
 
   .hero-copy h1,
-  .page-hero h1 {
+  .page-hero h1,
+  .sales-copy h1 {
     font-size: 34px;
   }
 
@@ -849,6 +1426,10 @@ textarea {
   .course-grid,
   .post-grid,
   .stats-grid,
+  .fit-grid,
+  .price-grid,
+  .testimonial-grid,
+  .theme-grid,
   .main-nav.is-open {
     grid-template-columns: 1fr;
   }
@@ -861,7 +1442,10 @@ textarea {
 
   .article-list a,
   .schedule-list div,
-  .timeline div {
+  .timeline div,
+  .experience-list li,
+  .teacher-stats,
+  .checkout-form fieldset {
     grid-template-columns: 1fr;
   }
 

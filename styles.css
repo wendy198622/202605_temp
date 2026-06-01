@@ -1496,6 +1496,85 @@ button {
   font-size: 26px;
 }
 
+.closing-cta {
+  text-align: left;
+}
+
+.closing-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 34px;
+  align-items: center;
+}
+
+.closing-copy h2 {
+  max-width: 720px;
+  margin: 10px 0 16px;
+}
+
+.closing-copy p {
+  max-width: 680px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.closing-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.closing-points li {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--teal-dark);
+  font-weight: 900;
+}
+
+.closing-card {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.closing-card .discount-badge {
+  justify-self: start;
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: var(--coral);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.closing-price {
+  display: grid;
+  gap: 4px;
+}
+
+.closing-price strong {
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.closing-price del,
+.closing-card small {
+  color: var(--muted);
+}
+
+.closing-card .button {
+  width: 100%;
+}
+
 .brand-funnel {
   display: grid;
   grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
@@ -1709,7 +1788,8 @@ button {
   .checkout-layout,
   .person-story-layout,
   .guide-layout,
-  .teacher-cta {
+  .teacher-cta,
+  .closing-offer {
     grid-template-columns: 1fr;
   }
 
@@ -1839,5 +1919,9 @@ button {
 
   .teacher-cta {
     padding: 24px;
+  }
+
+  .closing-card {
+    padding: 20px;
   }
 }

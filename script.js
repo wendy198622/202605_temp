@@ -8,24 +8,32 @@ const products = {
     title: "潛意識重塑實修課",
     type: "線上課程",
     price: 6280,
+    originalPrice: 8500,
+    discountLabel: "早鳥 74 折",
     access: "1 年觀看權限"
   },
   audio: {
     title: "21 天能量顯化音頻",
     type: "音頻產品",
     price: 1680,
+    originalPrice: 2400,
+    discountLabel: "限時 7 折",
     access: "永久聆聽"
   },
   journal: {
     title: "心靈專欄書寫課",
     type: "書寫課",
     price: 2280,
+    originalPrice: 3200,
+    discountLabel: "新品 71 折",
     access: "講義與回放"
   },
   program: {
     title: "年度能量重塑陪伴計畫",
     type: "年度計畫",
     price: 39800,
+    originalPrice: 48000,
+    discountLabel: "早鳥名額",
     access: "12 個月共修"
   }
 };
@@ -118,6 +126,18 @@ function cartTotal(cart) {
   }, 0);
 }
 
+function cartOriginalTotal(cart) {
+  return cart.reduce((sum, item) => {
+    const product = products[item.id];
+    if (!product) return sum;
+    return sum + (product.originalPrice || product.price) * item.qty;
+  }, 0);
+}
+
+function formatDiscount(value) {
+  return value > 0 ? `- ${formatPrice(value)}` : formatPrice(0);
+}
+
 function updateCartCount() {
   const count = getCart().reduce((sum, item) => sum + item.qty, 0);
   document.querySelectorAll(".cart-link").forEach((link) => {
@@ -131,7 +151,9 @@ function renderCartPage() {
 
   const cart = getCart();
   const checkoutLink = document.querySelector("#checkoutLink");
-  const subtotal = cartTotal(cart);
+  const subtotal = cartOriginalTotal(cart);
+  const total = cartTotal(cart);
+  const discount = Math.max(subtotal - total, 0);
 
   if (cart.length === 0) {
     container.innerHTML = `
@@ -154,7 +176,9 @@ function renderCartPage() {
             <p>${product.access}</p>
           </div>
           <div class="item-price">
+            <span class="discount-badge">${product.discountLabel || "優惠價"}</span>
             <strong>${formatPrice(product.price * item.qty)}</strong>
+            <del>${formatPrice((product.originalPrice || product.price) * item.qty)}</del>
             <small>數量 ${item.qty}</small>
           </div>
         </article>
@@ -164,8 +188,8 @@ function renderCartPage() {
   }
 
   setText("#cartSubtotal", formatPrice(subtotal));
-  setText("#cartDiscount", formatPrice(0));
-  setText("#cartTotal", formatPrice(subtotal));
+  setText("#cartDiscount", formatDiscount(discount));
+  setText("#cartTotal", formatPrice(total));
 }
 
 function renderCheckoutPage() {
@@ -173,7 +197,9 @@ function renderCheckoutPage() {
   if (!container) return;
 
   const cart = getCart();
+  const subtotal = cartOriginalTotal(cart);
   const total = cartTotal(cart);
+  const discount = Math.max(subtotal - total, 0);
   if (cart.length === 0) {
     container.innerHTML = `<p class="muted-text">購物車目前是空的，請先回到課程頁選擇項目。</p>`;
   } else {
@@ -182,12 +208,17 @@ function renderCheckoutPage() {
       if (!product) return "";
       return `
         <div class="mini-cart-row">
-          <span>${product.title} × ${item.qty}</span>
+          <div>
+            <span>${product.title} × ${item.qty}</span>
+            <small>${product.discountLabel || "優惠價"}｜原價 ${formatPrice((product.originalPrice || product.price) * item.qty)}</small>
+          </div>
           <strong>${formatPrice(product.price * item.qty)}</strong>
         </div>
       `;
     }).join("");
   }
+  setText("#checkoutSubtotal", formatPrice(subtotal));
+  setText("#checkoutDiscount", formatDiscount(discount));
   setText("#checkoutTotal", formatPrice(total));
 }
 

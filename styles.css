@@ -479,13 +479,86 @@ button {
   border-radius: 8px 8px 0 0;
 }
 
-.course-card div:not(.course-cover) {
+.course-card > div:not(.course-cover) {
   padding: 18px;
   flex: 1;
 }
 
 .course-card a {
   padding: 0 18px 20px;
+}
+
+.course-price {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 10px;
+  align-items: baseline;
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid rgba(20, 117, 103, 0.22);
+  border-radius: 8px;
+  background: #fffaf2;
+}
+
+.course-price .discount-badge,
+.item-price .discount-badge,
+.cta-price .discount-badge {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: var(--coral);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.course-price strong {
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.course-price del,
+.price-box del,
+.cta-price del,
+.item-price del {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.course-price small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.course-price.compact {
+  margin: 16px 0 14px;
+  padding: 12px;
+}
+
+.course-price.compact strong,
+.price-card .course-price strong {
+  font-size: 22px;
+}
+
+.course-price.micro {
+  width: 100%;
+  margin: 16px 0 0;
+  padding: 12px;
+  background: var(--paper);
+}
+
+.course-price.micro strong {
+  font-size: 20px;
+}
+
+.service-price {
+  margin-left: 22px;
+  margin-right: 22px;
 }
 
 .teaching-layout {
@@ -1174,6 +1247,25 @@ button {
   font-size: 30px;
 }
 
+.price-label-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.price-label-row b {
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: var(--coral);
+  color: #fff;
+  font-size: 12px;
+}
+
+.price-box del {
+  display: inline-block;
+}
+
 .definition-box {
   display: grid;
   gap: 6px;
@@ -1312,6 +1404,10 @@ button {
   font-size: 28px;
 }
 
+.price-card .course-price {
+  margin: 10px 0 14px;
+}
+
 .price-card.is-featured {
   border-color: rgba(20, 117, 103, 0.38);
   background: linear-gradient(180deg, rgba(20, 117, 103, 0.09), #fff 52%);
@@ -1382,6 +1478,22 @@ button {
 .cta-band h2 {
   max-width: 760px;
   margin: 10px auto 24px;
+}
+
+.cta-price {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  gap: 6px 10px;
+  align-items: baseline;
+  margin: 0 auto 22px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cta-price strong {
+  font-size: 26px;
 }
 
 .brand-funnel {
@@ -1493,6 +1605,16 @@ button {
 
 .item-price small {
   color: var(--muted);
+}
+
+.mini-cart-row div {
+  display: grid;
+  gap: 4px;
+}
+
+.mini-cart-row small {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .order-summary {
@@ -1684,6 +1806,19 @@ button {
   .belief-list article,
   .checkout-form fieldset {
     grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    flex-direction: column;
+  }
+
+  .item-price {
+    justify-items: start;
+  }
+
+  .course-price,
+  .cta-price {
+    width: 100%;
   }
 
   .schedule-list span {

@@ -1,69 +1,75 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="光語心靈學苑購物車，檢視已選課程、音頻與年度工作坊。">
-    <title>購物車｜光語心靈學苑</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="notice">2026 最新課程｜潛意識重塑工作坊開放報名</div>
-      <div class="nav-shell">
-        <a class="logo" href="index.html"><span class="logo-mark">光</span><span><strong>光語心靈學苑</strong><small>潛意識 × 冥想音頻</small></span></a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav">選單</button>
-        <nav class="main-nav" id="mainNav" aria-label="主選單">
-          <a href="index.html">首頁</a>
-          <a href="about.html">關於我</a>
-          <a href="services.html">服務項目</a>
-          <a href="courses.html">最新課程</a>
-          <a href="teaching.html">教學</a>
-          <a href="contact.html">聯絡我們</a>
-        </nav>
-        <div class="header-actions"><a class="cart-link is-active" href="cart.html">購物車 0</a><a class="login-link" href="contact.html">登入</a></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="檢視香悅服務購物車、填寫訂購資料並完成展示版結帳流程。">
+  <title>購物車與結帳｜香悅｜天使姐姐</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="modules.css">
+</head>
+<body>
+  <div id="siteHeader"></div>
+  <main>
+    <section class="cart-checkout-hero">
+      <div class="container">
+        <nav class="subpage-breadcrumb" aria-label="麵包屑"><a href="index.html">首頁</a><span aria-hidden="true">/</span><span aria-current="page">購物車與結帳</span></nav>
+        <p class="eyebrow">CHECKOUT PREVIEW</p>
+        <h1>服務訂購</h1>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <section class="page-hero compact">
-        <div class="container">
-          <p class="eyebrow">Cart</p>
-          <h1>購物車</h1>
-          <p>確認你想購買的課程、音頻或年度工作坊，下一步即可填寫結帳資料。</p>
-        </div>
-      </section>
+    <section class="module module--transaction module--cart-checkout">
+      <div class="container">
+        <section class="checkout-section checkout-items-section" aria-labelledby="cartItemsHeading">
+          <div class="checkout-section-heading">
+            <span class="checkout-step" aria-hidden="true">01</span>
+            <div><p class="eyebrow">YOUR ITEMS</p><h2 id="cartItemsHeading">商品明細</h2></div>
+            <button class="text-button danger checkout-clear" type="button" data-clear-cart>清空購物車</button>
+          </div>
+          <div class="checkout-card"><div id="cartItems" class="cart-items"></div></div>
+        </section>
 
-      <section class="section">
-        <div class="container cart-layout">
-          <div class="cart-panel">
-            <div class="cart-heading">
-              <h2>已選項目</h2>
-              <button class="text-button danger" type="button" data-clear-cart>清空購物車</button>
-            </div>
-            <div id="cartItems" class="cart-items"></div>
+        <form id="checkoutForm" class="checkout-workspace-grid">
+          <div class="checkout-details">
+            <section class="checkout-section" aria-labelledby="customerHeading">
+              <div class="checkout-section-heading"><span class="checkout-step" aria-hidden="true">02</span><div><p class="eyebrow">CUSTOMER DETAILS</p><h2 id="customerHeading">訂購資訊</h2></div></div>
+              <div class="checkout-card checkout-fields">
+                <label><span>姓名 <span aria-hidden="true">*</span></span><input type="text" name="customerName" autocomplete="name" required></label>
+                <label><span>聯絡電話 <span aria-hidden="true">*</span></span><input type="tel" name="phone" autocomplete="tel" required></label>
+                <label class="full-width"><span>電子郵件地址 <span aria-hidden="true">*</span></span><input type="email" name="customerEmail" autocomplete="email" required></label>
+              </div>
+            </section>
+
+            <section class="checkout-section" aria-labelledby="invoiceHeading">
+              <div class="checkout-section-heading"><span class="checkout-step" aria-hidden="true">03</span><div><p class="eyebrow">E-INVOICE</p><h2 id="invoiceHeading">電子發票資訊</h2></div></div>
+              <div class="checkout-card checkout-invoice">
+                <label class="checkout-field"><span>開立方式 <span aria-hidden="true">*</span></span><select name="invoiceType" id="invoiceType"><option value="personal">個人用電子發票</option><option value="company">公司用電子發票</option></select></label>
+                <div id="companyInvoiceFields" class="checkout-fields" hidden><label><span>公司抬頭 <span aria-hidden="true">*</span></span><input type="text" name="companyName" autocomplete="organization"></label><label><span>統一編號 <span aria-hidden="true">*</span></span><input type="text" name="taxId" inputmode="numeric" pattern="[0-9]{8}" maxlength="8" title="請輸入 8 位數字"></label></div>
+                <label class="checkout-check"><input type="checkbox" id="useCarrier" name="useCarrier"><span>使用手機條碼載具</span></label>
+                <label class="checkout-field" id="carrierField" hidden><span>手機條碼 <span aria-hidden="true">*</span></span><input type="text" name="carrierCode" placeholder="/ 開頭，共 8 碼" pattern="/[0-9A-Z.+-]{7}" maxlength="8" title="請輸入以 / 開頭的 8 碼手機條碼"></label>
+              </div>
+            </section>
+
+            <section class="checkout-section" aria-labelledby="extrasHeading">
+              <div class="checkout-section-heading"><span class="checkout-step" aria-hidden="true">04</span><div><p class="eyebrow">EXTRAS</p><h2 id="extrasHeading">備註與折價券</h2></div></div>
+              <div class="checkout-card checkout-extras">
+                <label class="checkout-check"><input type="checkbox" id="useNote"><span>我要填寫訂單備註</span></label>
+                <label class="checkout-field" id="noteField" hidden><span>訂單備註</span><textarea name="note" rows="4" placeholder="例如：偏好的預約時段，或想先讓老師知道的事項"></textarea></label>
+                <div class="checkout-coupon"><label class="checkout-field" for="couponCode"><span>折價券代碼</span></label><div class="checkout-coupon-row"><input id="couponCode" type="text" name="couponCode" autocomplete="off" placeholder="輸入折扣代碼"><button class="button secondary" type="button" id="applyCoupon">使用折扣碼</button></div><p class="checkout-coupon-message" id="couponMessage" role="status">展示用代碼：DEMO100，可折抵 NT$ 100。</p></div>
+              </div>
+            </section>
           </div>
 
-          <aside class="order-summary">
-            <p class="eyebrow">Order Summary</p>
-            <div class="summary-row"><span>商品原價</span><strong id="cartSubtotal">NT$ 0</strong></div>
-            <div class="summary-row"><span>折扣</span><strong id="cartDiscount">NT$ 0</strong></div>
-            <div class="summary-row total"><span>合計</span><strong id="cartTotal">NT$ 0</strong></div>
-            <a class="button primary" href="checkout.html" id="checkoutLink">前往結帳</a>
-            <a class="button secondary" href="courses.html">繼續選課</a>
+          <aside class="checkout-sidebar" aria-label="訂單與付款">
+            <div class="order-summary checkout-review"><p class="eyebrow">ORDER REVIEW</p><h2>結帳明細</h2><div id="checkoutItems" class="mini-cart"></div><div class="summary-row" id="couponSummaryRow" hidden><span>折價券</span><strong id="couponDiscount">− NT$ 100</strong></div><div class="summary-row total"><span>合計</span><strong id="checkoutTotal">NT$ 0</strong></div></div>
+            <div class="checkout-payment-card"><p class="eyebrow">PAYMENT</p><h2>選擇付款方式</h2><fieldset class="checkout-payment-options"><legend class="sr-only">付款方式</legend><label class="checkout-payment-option"><input type="radio" name="payment" value="credit" checked><span><strong>信用卡</strong><small>Visa・Mastercard・JCB</small></span></label><label class="checkout-payment-option"><input type="radio" name="payment" value="transfer"><span><strong>ATM 銀行轉帳</strong><small>示意轉帳流程，本站不提供繳費資訊</small></span></label><label class="checkout-payment-option"><input type="radio" name="payment" value="applepay" disabled><span><strong>Apple Pay</strong><small>正式串接金流後啟用</small></span></label><label class="checkout-payment-option"><input type="radio" name="payment" value="linepay" disabled><span><strong>LINE Pay</strong><small>正式串接金流後啟用</small></span></label></fieldset><p class="demo-note">目前僅展示購物流程；完成後請透過 LINE 確認服務形式與時段。</p><label class="checkout-check checkout-agreement"><input type="checkbox" name="demoAgreement" required><span>我已了解這是展示流程，送出後不會正式扣款或成立訂單。</span></label><button class="button primary checkout-submit" type="submit">送出示意訂單</button></div>
           </aside>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div><strong>光語心靈學苑</strong><p>陪你透過潛意識、冥想與能量練習，找回穩定而豐盛的生活節奏。</p></div>
-        <nav aria-label="頁尾選單"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="courses.html">最新課程</a><a href="contact.html">聯絡我們</a></nav>
+        </form>
       </div>
-      <p class="copyright">Copyright © 2026 光語心靈學苑 保留一切權利。</p>
-    </footer>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="script.js"></script>
-  </body>
+    </section>
+  </main>
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
 </html>

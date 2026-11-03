@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" role="img" aria-labelledby="title desc">
+  <title id="title">香悅 SUN WAY</title>
+  <desc id="desc">金黃色蓮花與香悅品牌字樣</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2cb56"/>
+      <stop offset="1" stop-color="#c99024"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(7 8)" fill="url(#g)" stroke="#aa741e" stroke-width="1.4" stroke-linejoin="round">
+    <path d="M40 57C28 45 25 28 40 10c15 18 12 35 0 47Z"/>
+    <path d="M36 60C19 56 9 46 8 29c17 3 28 13 28 31Z"/>
+    <path d="M44 60c17-4 27-14 28-31-17 3-28 13-28 31Z"/>
+    <path d="M31 66C17 66 6 60 1 49c15-2 26 4 30 17Z"/>
+    <path d="M49 66c14 0 25-6 30-17-15-2-26 4-30 17Z"/>
+    <path d="M17 70c14 6 32 6 46 0" fill="none" stroke-width="2"/>
+  </g>
+  <text x="100" y="48" fill="#46352e" font-family="'Noto Serif TC','PMingLiU',serif" font-size="32" font-weight="600" letter-spacing="7">香悅</text>
+  <text x="102" y="73" fill="#987334" font-family="Georgia,serif" font-size="12" letter-spacing="5">SUN WAY</text>
+  <line x1="227" y1="19" x2="227" y2="76" stroke="#d9c59e"/>
+  <text x="247" y="54" fill="#46352e" font-family="'Noto Serif TC','PMingLiU',serif" font-size="23" letter-spacing="2">天使姐姐</text>
+</svg>

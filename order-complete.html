@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="香悅結帳完成頁，確認展示版訂單狀態並查看後續聯絡方式。">
+  <title>結帳完成｜香悅｜天使姐姐</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="modules.css">
+</head>
+<body>
+  <div id="siteHeader"></div>
+  <main class="completion-page">
+    <div class="container">
+      <nav class="subpage-breadcrumb" aria-label="麵包屑"><a href="index.html">首頁</a><span aria-hidden="true">/</span><span aria-current="page">結帳完成</span></nav>
+      <section class="completion-panel" aria-labelledby="completionHeading">
+        <span class="completion-icon" aria-hidden="true">✓</span>
+        <p class="eyebrow">ORDER COMPLETE</p>
+        <h1 id="completionHeading">結帳完成頁預覽</h1>
+        <p class="completion-number">訂單編號：<strong id="completionNumber">SW-DEMO-PREVIEW</strong></p>
+        <p class="completion-message" id="completionMessage">這是結帳完成頁的版型預覽。本站沒有扣款或傳送資料；正式上線後，此處才會顯示付款結果與訂單通知。</p>
+        <section class="completion-order" id="completionOrder" aria-labelledby="completionOrderHeading" hidden>
+          <div class="completion-order-heading"><h2 id="completionOrderHeading">訂購內容</h2><span>展示訂單</span></div>
+          <div class="completion-items" id="completionItems"></div>
+          <div class="completion-order-row" id="completionCouponRow" hidden><span>折價券折抵</span><strong id="completionCoupon">− NT$ 0</strong></div>
+          <div class="completion-order-row completion-order-total"><span>合計</span><strong id="completionTotal">NT$ 0</strong></div>
+          <div class="completion-order-row completion-order-payment"><span>付款方式</span><span id="completionPayment">示意流程</span></div>
+        </section>
+        <div class="completion-actions">
+          <a class="button primary" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">加入 LINE 確認時段</a>
+          <a class="button secondary" href="courses.html">繼續瀏覽課程</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -57,13 +57,13 @@ if (header) {
   header.className = "site-header";
   header.innerHTML = `
     <div class="nav-shell">
-      <a class="logo" href="index.html" aria-label="香悅｜天使姐姐首頁"><img src="assets/sunway-logo_new.svg" alt="香悅 SUN WAY｜天使姐姐"></a>
+      <a class="logo" href="index.html" aria-label="香悅｜天使姐姐首頁"><img src="assets/sunway-logo_new.svg" alt="香悅 SUN WAY｜天使姐姐"><span>香悅｜天使姐姐</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav">選單</button>
       <nav class="main-nav" id="mainNav" aria-label="主選單">
         ${navItems.map(([href, label]) => `<a ${page === href ? 'class="is-active" aria-current="page"' : ""} href="${href}">${label}</a>`).join("")}
-        <a class="mobile-cart" href="cart.html">購物車</a><a class="mobile-cart" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE 諮詢</a>
+        <a class="mobile-cart mobile-cart-link" href="cart.html" aria-label="購物車，共 0 件商品"><span>購物車</span><span class="cart-count" hidden>0</span></a><a class="mobile-cart" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE 諮詢</a>
       </nav>
-      <div class="header-actions"><a class="cart-link" href="cart.html">購物車 0</a><a class="login-link" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE 諮詢</a></div>
+      <div class="header-actions"><a class="cart-link" href="cart.html" aria-label="購物車，共 0 件商品"><span>購物車</span><span class="cart-count" hidden>0</span></a><a class="login-link" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE 諮詢</a></div>
     </div>`;
   const menuButton = header.querySelector(".menu-toggle");
   const mainNav = header.querySelector(".main-nav");
@@ -78,12 +78,48 @@ if (footer) {
   footer.className = "site-footer";
   footer.innerHTML = `
     <div class="container footer-grid">
-      <div><strong>香悅｜天使姐姐 Angela</strong><p>芳香照護・情緒陪伴・生命成長</p></div>
-      <nav aria-label="頁尾選單"><a href="about.html">關於我</a><a href="services.html">服務項目</a><a href="courses.html">最新課程</a><a href="contact.html">聯絡我們</a></nav>
-      <div class="footer-contact"><a href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE｜@sunway20081224</a><a href="mailto:angela29112458@gmail.com">angela29112458@gmail.com</a></div>
+      <div class="footer-brand"><strong>香悅｜天使姐姐</strong><p>芳香照護・情緒陪伴・生命成長</p></div>
+      <nav class="footer-nav" aria-label="頁尾選單"><strong>網站導覽</strong><a href="about.html">關於我</a><a href="services.html">課程與服務</a><a href="cart.html">購物車</a></nav>
+      <div class="footer-contact"><strong>聯絡資訊</strong><a href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer">LINE｜@sunway20081224</a><a href="mailto:angela29112458@gmail.com">angela29112458@gmail.com</a><a href="https://www.facebook.com/sunway20081224" target="_blank" rel="noopener noreferrer">Facebook</a></div>
     </div>
-    <p class="copyright">© 2026 香悅。本站為課程購買流程展示，正式售價、服務內容與預約規則以上線公告為準。</p>`;
+    <div class="container footer-bottom">
+      <div class="footer-bottom-row">
+        <nav class="footer-policies" aria-label="政策資訊"><a href="privacy-policy.html">隱私權政策</a><a href="refund-policy.html">退換貨政策</a><a href="anti-fraud.html">防詐騙資訊</a></nav>
+        <nav class="footer-social" aria-label="社群連結">
+          <a class="footer-social-item" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer" aria-label="加入香悅 LINE" title="加入香悅 LINE"><svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.1c0 4-3.6 7.2-8 7.2-.8 0-1.6-.1-2.3-.3L5 20.5l1.2-3.6C4.8 15.6 4 13.4 4 11.1 4 7.1 7.6 4 12 4s8 3.1 8 7.1Z"/><circle cx="8.5" cy="11.2" r=".8"/><circle cx="12" cy="11.2" r=".8"/><circle cx="15.5" cy="11.2" r=".8"/></svg></a>
+          <a class="footer-social-item instagram-placeholder" href="#" aria-label="Instagram 連結待設定" title="Instagram 連結待設定"><svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="solid" cx="17.5" cy="6.7" r="1"/></svg></a>
+          <a class="footer-social-item" href="https://www.facebook.com/sunway20081224" target="_blank" rel="noopener noreferrer" aria-label="前往香悅 Facebook" title="前往香悅 Facebook"><svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="solid" d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a22 22 0 0 0-2.4-.1c-2.4 0-4.1 1.5-4.1 4.2V10H8v3h2.5v8h3.2Z"/></svg></a>
+        </nav>
+      </div>
+      <p class="copyright">© 2026 香悅。本站為課程購買流程展示，正式售價、服務內容與預約規則以上線公告為準。</p>
+    </div>`;
 }
+
+const socialRail = document.createElement("nav");
+socialRail.className = "social-rail";
+socialRail.setAttribute("aria-label", "社群與頁面捷徑");
+socialRail.innerHTML = `
+  <a class="social-rail-item" href="https://line.me/R/ti/p/@sunway20081224" target="_blank" rel="noopener noreferrer" aria-label="加入香悅 LINE" title="加入香悅 LINE">
+    <svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.1c0 4-3.6 7.2-8 7.2-.8 0-1.6-.1-2.3-.3L5 20.5l1.2-3.6C4.8 15.6 4 13.4 4 11.1 4 7.1 7.6 4 12 4s8 3.1 8 7.1Z"/><circle cx="8.5" cy="11.2" r=".8"/><circle cx="12" cy="11.2" r=".8"/><circle cx="15.5" cy="11.2" r=".8"/></svg><span class="social-rail-caption">LINE</span>
+  </a>
+  <a class="social-rail-item instagram-placeholder" href="#" aria-label="Instagram 連結待設定" title="Instagram 連結待設定">
+    <svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="solid" cx="17.5" cy="6.7" r="1"/></svg><span class="social-rail-caption">IG</span>
+  </a>
+  <a class="social-rail-item" href="https://www.facebook.com/sunway20081224" target="_blank" rel="noopener noreferrer" aria-label="前往香悅 Facebook" title="前往香悅 Facebook">
+    <svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="solid" d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a22 22 0 0 0-2.4-.1c-2.4 0-4.1 1.5-4.1 4.2V10H8v3h2.5v8h3.2Z"/></svg><span class="social-rail-caption">FB</span>
+  </a>
+  <button class="social-rail-item social-rail-top" type="button" aria-label="回到頁首" title="回到頁首">
+    <svg class="social-rail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg><span class="social-rail-caption">TOP</span>
+  </button>`;
+document.body.appendChild(socialRail);
+document.querySelectorAll(".instagram-placeholder").forEach((link) => link.addEventListener("click", (event) => {
+  event.preventDefault();
+  showToast("Instagram 連結尚未設定。");
+}));
+socialRail.querySelector(".social-rail-top").addEventListener("click", () => {
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+});
 
 let toast = document.querySelector("#toast");
 function showToast(message) {
@@ -140,7 +176,12 @@ function setText(selector, value) {
 }
 function updateCartCount() {
   const count = getCart().reduce((sum, item) => sum + item.qty, 0);
-  document.querySelectorAll(".cart-link").forEach((link) => link.textContent = `購物車 ${count}`);
+  document.querySelectorAll(".cart-link, .mobile-cart-link").forEach((link) => {
+    const badge = link.querySelector(".cart-count");
+    badge.textContent = count > 99 ? "99+" : String(count);
+    badge.hidden = count === 0;
+    link.setAttribute("aria-label", `購物車，共 ${count} 件商品`);
+  });
 }
 
 function addToCart(id) {
